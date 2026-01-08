@@ -6,12 +6,12 @@ export const up = async (knex) => {
       .references("id")
       .inTable("products")
       .onDelete("CASCADE");
+    table
+      .integer("ingredient_id")
+      .references("id")
+      .inTable("ingredients")
+      .onDelete("CASCADE");
   });
-  table
-    .integer("ingredient_id")
-    .references("id")
-    .inTable("ingredients")
-    .onDelete("CASCADE");
 };
 
 export const down = async (knex) => {
