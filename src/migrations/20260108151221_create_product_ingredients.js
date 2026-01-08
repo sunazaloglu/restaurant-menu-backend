@@ -1,13 +1,14 @@
 export const up = async (knex) => {
   await knex.schema.createTable("product_ingredients", (table) => {
+    table.increments("id").primary();
     table
-      .string("product_id")
+      .integer("product_id")
       .references("id")
       .inTable("products")
       .onDelete("CASCADE");
   });
   table
-    .string("ingredient_id")
+    .integer("ingredient_id")
     .references("id")
     .inTable("ingredients")
     .onDelete("CASCADE");
