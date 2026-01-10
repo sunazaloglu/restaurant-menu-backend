@@ -1,5 +1,6 @@
 import {
   createCategory,
+  deleteCategory,
   getAllCategories,
   getCategoryById,
   updateCategory,
@@ -41,6 +42,20 @@ export const updateItem = async (req, res) => {
     }
 
     res.status(200).json(updatedItem);
+  } catch (error) {
+    logger(error, ERROR);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const deleteItem = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedItem = await deleteCategory(id);
+    if (!deletedItem) {
+      res.status(404).json({ message: "Category not found" });
+    }
+    return res.status(200).json(deletedItem);
   } catch (error) {
     logger(error, ERROR);
     res.status(500).json({ message: "Internal Server Error" });

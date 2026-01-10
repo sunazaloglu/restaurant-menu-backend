@@ -5,7 +5,7 @@ export const createCategory = async (category) => {
 };
 
 export const getAllCategories = async () => {
-  const query = knex("categories").select("id", "name");
+  const query = await knex("categories").select("id", "name");
   return query;
 };
 
@@ -15,6 +15,14 @@ export const updateCategory = async (id, category) => {
     .update(category)
     .returning("*");
   return updateCategory;
+};
+
+export const deleteCategory = async (id) => {
+  const deletedCategory = await knex("categories")
+    .where('id' , id)
+    .update({ deleted_at: knex.fn.now() })
+    .returning("*");
+  return deletedCategory;
 };
 export const getCategoryById = async (id) => {
   const category = await knex("categories").where({ id }).first();

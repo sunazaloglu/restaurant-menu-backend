@@ -12,6 +12,7 @@ app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/items", categoryRoutes);
 app.use("/api/v1/categories/:id", categoryRoutes);
 app.use("/api/v1/categories/:id", categoryRoutes);
+app.use("/api/v1/categories/:id", categoryRoutes);
 
 app.get("/projectcheck", (req, res) => {
   res.status(200).json({ message: "OK" });
