@@ -9,6 +9,13 @@ export const getAllCategories = async () => {
   return query;
 };
 
+export const updateCategory = async (id, category) => {
+  const [updateCategory] = await knex("categories")
+    .where({ id })
+    .update(category)
+    .returning("*");
+  return updateCategory;
+};
 export const getCategoryById = async (id) => {
   const category = await knex("categories").where({ id }).first();
   return category;
