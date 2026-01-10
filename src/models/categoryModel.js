@@ -1,5 +1,4 @@
-import db from "../config/database.js";
-
+import knex from "../config/database.js";
 export const createCategory = async (category) => {
   const [newItem] = await knex("categories").insert(category).returning("*");
   return newItem;
