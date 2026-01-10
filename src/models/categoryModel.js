@@ -8,3 +8,8 @@ export const getAllCategories = async () => {
   const query = knex("categories").select("id", "name");
   return query;
 };
+
+export const getCategoryById = async (id) => {
+  const category = await knex("categories").where({ id }).first();
+  return category;
+};
