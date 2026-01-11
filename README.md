@@ -23,7 +23,7 @@ The API follows REST principles and is structured with a clean, modular architec
 1. **Clone the repository**
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/sunazaloglu/restaurant-menu-backend.git
 cd blog-site-backend
 
 Install dependencies:
