@@ -2,6 +2,7 @@ import {
   createProducts,
   getAllProducts,
   getProductById,
+  updateProducts,
 } from "../models/productsModel.js";
 import { logger } from "../utils/logger.js";
 import knex from "../config/database.js";
@@ -52,6 +53,25 @@ export const getProduct = async (req, res) => {
       return res.status(404).json({ message: " Product not found" });
     }
     res.status(200).json(product);
+  } catch (error) {
+    logger(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const updateProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateData = req.body;
+
+    if (!updateData || Object.keys(updateData).length === 0) {
+      return res.status(400).json({ message: "No data provided for update" });
+    }
+    const updatedData = await updateProducts(id, updateData);
+    if (!updatedData) {
+      res.status(404).json({ message: "Product not found" });
+    }
+    res.status(200).json(updateData);
   } catch (error) {
     logger(error);
     res.status(500).json({ message: "Internal Server Error" });

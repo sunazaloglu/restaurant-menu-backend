@@ -15,7 +15,15 @@ export const getAllProducts = async () => {
   return query;
 };
 
+export const updateProducts = async (id, products) => {
+  const [updateProduct] = await knex("products")
+    .where({ id: id }).whereNull("deleted_at")
+    .update(products)
+    .returning("*");
+  return updateProduct;
+};
+
 export const getProductById = async (id) => {
-  const product = await knex("products").where({ id }).first();
+  const product = await knex("products").where({ id }).whereNull("deleted_at").first();
   return product;
 };
