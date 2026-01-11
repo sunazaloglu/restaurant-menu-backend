@@ -1,5 +1,6 @@
 import {
   createProducts,
+  deleteProducts,
   getAllProducts,
   getProductById,
   updateProducts,
@@ -72,6 +73,20 @@ export const updateProduct = async (req, res) => {
       res.status(404).json({ message: "Product not found" });
     }
     res.status(200).json(updateData);
+  } catch (error) {
+    logger(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedItem = await deleteProducts(id);
+    if (!deletedItem) {
+      res.status(404).json({ message: " Product not found" });
+    }
+    res.status(200).json(deletedItem);
   } catch (error) {
     logger(error);
     res.status(500).json({ message: "Internal Server Error" });
