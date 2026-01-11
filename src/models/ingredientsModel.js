@@ -10,9 +10,22 @@ export const createIngredient = async (ingredient) => {
   return newIngredient;
 };
 
-export const getAllIngredient = async () => {
-  const query = await knex("ingredients").select("id", "name", "is_allergen");
-  return query;
+export const getAllIngredient = async (showDeleted = "false") => {
+  const query = knex("ingredients").select(
+    "id",
+    "name",
+    "is_allergen",
+    "deleted_at"
+  );
+
+  if (showDeleted === "true") {
+  } else if (showDeleted === "onlyDeleted") {
+    query.whereNotNull("deleted_at");
+  } else {
+    query.whereNull("deleted_at"); // default
+  }
+
+  return query.orderBy("id", "asc");
 };
 
 export const getIngredientById = async (id) => {
@@ -27,15 +40,21 @@ export const updateIngredient = async (id, ingredient) => {
   const [updatedIngredient] = await knex("ingredients")
     .where({ id })
     .whereNull("deleted_at")
-    .update(ingredient)
+    .update({
+      ...ingredient,
+      updated_at: knex.fn.now(),
+    })
     .returning("*");
+
   return updatedIngredient;
 };
 
 export const deleteIngredient = async (id) => {
-  const deletedIngredient = await knex("ingredients")
-    .where("id", id)
-    .update({ deleted_at: knex.fn.now() })
+  const [deleted] = await knex("ingredients")
+    .where({ id })
+    .whereNull("deleted_at")
+    .update({ deleted_at: knex.fn.now(), updated_at: knex.fn.now() })
     .returning("*");
-  return deletedIngredient;
+
+  return deleted ?? null;
 };

@@ -24,7 +24,7 @@ export const createIngredients = async (req, res) => {
       return res.status(400).json({ message: "is_allergen must be boolean" });
     }
     const newIngredient = await createIngredient({
-      name: ingredient.name,
+      name: ingredient.name.trim(),
       is_allergen: ingredient.is_allergen,
     });
 
@@ -37,11 +37,12 @@ export const createIngredients = async (req, res) => {
 
 export const getAllIngredients = async (req, res) => {
   try {
-    const items = await getAllIngredient();
-    res.status(200).json(items);
+    const { showDeleted } = req.query;
+    const items = await getAllIngredient(showDeleted);
+    return res.status(200).json(items);
   } catch (error) {
     logger(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -62,19 +63,38 @@ export const getIngredient = async (req, res) => {
 export const updateIngredients = async (req, res) => {
   try {
     const { id } = req.params;
-    const ingredientData = req.body;
+    const data = req.body;
 
-    if (!ingredientData || Object.keys(ingredientData).length === 0) {
+    if (!data || Object.keys(data).length === 0) {
       return res.status(400).json({ message: "No data provided for update" });
     }
-    const ingredientDataValidated = await updateIngredient(id, ingredientData);
-    if (!ingredientDataValidated) {
-      res.status(404).json({ message: "Ingredient not found" });
+
+    if (data.name !== undefined && String(data.name).trim().length === 0) {
+      return res.status(400).json({ message: "name cannot be empty" });
     }
-    res.status(200).json(ingredientDataValidated);
+
+    if (
+      data.is_allergen !== undefined &&
+      typeof data.is_allergen !== "boolean"
+    ) {
+      return res.status(400).json({ message: "is_allergen must be boolean" });
+    }
+
+    const updated = await updateIngredient(id, {
+      ...(data.name !== undefined ? { name: String(data.name).trim() } : {}),
+      ...(data.is_allergen !== undefined
+        ? { is_allergen: data.is_allergen }
+        : {}),
+    });
+
+    if (!updated) {
+      return res.status(404).json({ message: "Ingredient not found" });
+    }
+
+    return res.status(200).json(updated);
   } catch (error) {
     logger(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -83,11 +103,11 @@ export const deleteIngredients = async (req, res) => {
     const { id } = req.params;
     const deletedItem = await deleteIngredient(id);
     if (!deletedItem) {
-      res.status(404).json({ message: "Ingredient not found" });
+      return res.status(404).json({ message: "Ingredient not found" });
     }
-    res.status(200).json(deletedItem);
+    return res.status(200).json(deletedItem);
   } catch (error) {
     logger(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
