@@ -31,3 +31,11 @@ export const updateIngredient = async (id, ingredient) => {
     .returning("*");
   return updatedIngredient;
 };
+
+export const deleteIngredient = async (id) => {
+  const deletedIngredient = await knex("ingredients")
+    .where("id", id)
+    .update({ deleted_at: knex.fn.now() })
+    .returning("*");
+  return deletedIngredient;
+};
