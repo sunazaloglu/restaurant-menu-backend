@@ -1,0 +1,1258 @@
+{
+  "info": {
+    "_postman_id": "0d366772-8f97-4790-8279-4082dcc196ca",
+    "name": "Restaurant Menu Backend Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42401341",
+    "_collection_link": "https://takmdeneme.postman.co/workspace/tak%C4%B1m~5b481ee0-4bf6-4bfa-983d-b166a41c85b1/collection/42401341-0d366772-8f97-4790-8279-4082dcc196ca?action=share&source=collection_link&creator=42401341"
+  },
+  "item": [
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "New Item",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Kategori-8\",\n    \"description\": \"Aciklama-8\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/categories",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "categories"]
+            }
+          },
+          "response": [
+            {
+              "name": "New Item",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Kategori-8\",\n    \"description\": \"Aciklama-8\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/categories",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "categories"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "131"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"83-feC/fBSoLCMbEgifk9NPI1Z78k0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 10 Jan 2026 19:08:14 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 8,\n    \"name\": \"Kategori-8\",\n    \"description\": \"Aciklama-8\",\n    \"created_at\": \"2026-01-10T19:08:14.300Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/categories",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "categories"],
+              "query": [
+                {
+                  "key": "showDeleted",
+                  "value": "true",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Items",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/categories",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "categories"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "59"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3b-13IBqo9SZiuq7Bs7F1RHiDCri7U\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 10 Jan 2026 13:33:47 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 5,\n        \"name\": \"Kategori-1\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Kategori-2\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Select Item",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/categories/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "categories", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Select Item",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/categories/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "categories", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "131"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"83-3PPMgoLbYdO5/s7mQqNfX50x0r0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 10 Jan 2026 13:57:12 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 5,\n    \"name\": \"Kategori-1\",\n    \"description\": \"Aciklama-1\",\n    \"created_at\": \"2026-01-10T13:09:03.154Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Item",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Kategori-6\",\n    \"description\": \"vwkjbfn\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/categories/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "categories", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "New Request",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Kategori-6\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/categories/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "categories", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "131"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"83-mOWXR7TRRL+3ofVFAqTDiKceWGs\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 10 Jan 2026 19:07:06 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 6,\n    \"name\": \"Kategori-6\",\n    \"description\": \"Aciklama-2\",\n    \"created_at\": \"2026-01-10T13:09:19.858Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Item",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/categories/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "categories", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "7"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Item",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/categories/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "categories", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "7"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "155"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"9b-M2e5kX6yILGwfJwBxLgh/LokJfk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 10 Jan 2026 19:15:42 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 7,\n        \"name\": \"Kategori-3\",\n        \"description\": \"Aciklama-3\",\n        \"created_at\": \"2026-01-10T19:07:44.154Z\",\n        \"updated_at\": null,\n        \"deleted_at\": \"2026-01-10T19:15:42.462Z\"\n    }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "New Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category_id\": 6,\n  \"name\": \"Hamburger\",\n  \"description\": \"Sosisli\",\n  \"price\": 150\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/products",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "products"]
+            }
+          },
+          "response": [
+            {
+              "name": "New Product",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category_id\": 6,\n  \"name\": \"Hamburger\",\n  \"description\": \"Sosisli\",\n  \"price\": 150\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/products",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "products"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "155"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"9b-zfYXwngSHCCTBUqxTH8eco4hoMQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 10:22:39 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 6,\n    \"name\": \"Hamburger\",\n    \"description\": \"Sosisli\",\n    \"price\": 150,\n    \"category_id\": 6,\n    \"created_at\": \"2026-01-11T10:22:39.384Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/products",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "products"],
+              "query": [
+                {
+                  "key": "showDeleted",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "category",
+                  "value": "6",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Products",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/products",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "products"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "112"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"70-3dJPs8DeAklYErGhKxnXXD1k4do\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 10:42:21 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 4,\n        \"name\": \"Pizza\",\n        \"price\": 150,\n        \"category_id\": null\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Hamburger\",\n        \"price\": 150,\n        \"category_id\": 6\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Select Product",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/products/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "products", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Select Product",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/products/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "products", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "155"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"9b-zfYXwngSHCCTBUqxTH8eco4hoMQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 10:42:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 6,\n    \"name\": \"Hamburger\",\n    \"description\": \"Sosisli\",\n    \"price\": 150,\n    \"category_id\": 6,\n    \"created_at\": \"2026-01-11T10:22:39.384Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Cheese Burger\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/products/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "products", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Product",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Cheese Burger\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/products/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "products", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "24"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"18-75rAFH6Q94WXFnnduvxu6N4IiCU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 12:05:38 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"name\": \"Cheese Burger\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/products/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "products", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Product",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/products/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "products", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "179"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"b3-fnQa1+hc0XFV3B3571UaC9G6t5w\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 12:17:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 6,\n        \"name\": \"Hamburger\",\n        \"description\": \"Sosisli\",\n        \"price\": 150,\n        \"category_id\": 6,\n        \"created_at\": \"2026-01-11T10:22:39.384Z\",\n        \"updated_at\": null,\n        \"deleted_at\": \"2026-01-11T12:17:25.117Z\"\n    }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ingredients",
+      "item": [
+        {
+          "name": "New Ingredients",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"mayonez\",\n  \"is_allergen\": true\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/ingredients",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "ingredients"]
+            }
+          },
+          "response": [
+            {
+              "name": "New Ingredients",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"mayonez\",\n  \"is_allergen\": true\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/ingredients",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "ingredients"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "120"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"78-1G1vc+/38/k53LuQ6BDreMFs7cM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 15:04:26 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 2,\n    \"name\": \"mayonez\",\n    \"is_allergen\": true,\n    \"created_at\": \"2026-01-11T15:04:26.068Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Ingredients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/ingredients",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "ingredients"]
+            }
+          },
+          "response": [
+            {
+              "name": "Get All Ingredients",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/ingredients",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "ingredients"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "90"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5a-oR+yKnD9Xy+gYAUp/UisMmUY6qA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 15:04:31 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"name\": \"ketcap\",\n        \"is_allergen\": true\n    },\n    {\n        \"id\": 2,\n        \"name\": \"mayonez\",\n        \"is_allergen\": true\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Select Ingredients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/ingredients/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "ingredients", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Select Ingredients",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/ingredients/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "ingredients", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "119"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"77-765E1EilF35haky6iQxx88//UW8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 15:17:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"name\": \"ketcap\",\n    \"is_allergen\": true,\n    \"created_at\": \"2026-01-11T14:53:15.859Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Ingredients",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\n    \"is_allergen\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/ingredients/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "ingredients", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Ingredients",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\n    \"is_allergen\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/ingredients/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "ingredients", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "126"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"7e-wY1nQJibPq633xU/7Ov+HiPkyKA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 17:43:29 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"name\": \" balli hardal\",\n    \"is_allergen\": true,\n    \"created_at\": \"2026-01-11T14:53:15.859Z\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Ingredients",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/ingredients/:id",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "ingredients", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Ingredients",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/ingredients/:id",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "v1", "ingredients", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "150"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"96-pg5ybFgvBrT7fyhulQs0R3vfUhM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 11 Jan 2026 17:43:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"name\": \" balli hardal\",\n        \"is_allergen\": true,\n        \"created_at\": \"2026-01-11T14:53:15.859Z\",\n        \"updated_at\": null,\n        \"deleted_at\": \"2026-01-11T17:43:59.654Z\"\n    }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Project Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/projectcheck",
+          "host": ["{{base_url}}"],
+          "path": ["projectcheck"]
+        }
+      },
+      "response": [
+        {
+          "name": "Project Check",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/projectcheck",
+              "host": ["{{base_url}}"],
+              "path": ["projectcheck"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "16"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"10-MxB4y4MLcx6QDsp8b8vgp7iFMFo\""
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 08 Jan 2026 16:31:56 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"OK\"\n}"
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [{ "key": "base_url", "value": "http://localhost:3000" }]
+}
