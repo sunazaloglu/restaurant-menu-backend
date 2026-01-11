@@ -1,4 +1,7 @@
-import { createIngredient } from "../models/ingredientsModel.js";
+import {
+  createIngredient,
+  getAllIngredient,
+} from "../models/ingredientsModel.js";
 import { logger } from "../utils/logger.js";
 
 export const createIngredients = async (req, res) => {
@@ -26,5 +29,15 @@ export const createIngredients = async (req, res) => {
   } catch (error) {
     logger(error);
     return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const getAllIngredients = async (req, res) => {
+  try {
+    const items = await getAllIngredient();
+    res.status(200).json(items);
+  } catch (error) {
+    logger(error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };

@@ -9,3 +9,8 @@ export const createIngredient = async (ingredient) => {
     .returning("*");
   return newIngredient;
 };
+
+export const getAllIngredient = async () => {
+  const query = await knex("ingredients").select("id", "name", "is_allergen");
+  return query;
+};
