@@ -14,3 +14,8 @@ export const getAllProducts = async () => {
   );
   return query;
 };
+
+export const getProductById = async (id) => {
+  const product = await knex("products").where({ id }).first();
+  return product;
+};

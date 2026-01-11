@@ -1,4 +1,8 @@
-import { createProducts, getAllProducts } from "../models/productsModel.js";
+import {
+  createProducts,
+  getAllProducts,
+  getProductById,
+} from "../models/productsModel.js";
 import { logger } from "../utils/logger.js";
 import knex from "../config/database.js";
 
@@ -34,6 +38,20 @@ export const getAllProduct = async (req, res) => {
   try {
     const items = await getAllProducts();
     res.status(200).json(items);
+  } catch (error) {
+    logger(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const getProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await getProductById(id);
+    if (!product) {
+      return res.status(404).json({ message: " Product not found" });
+    }
+    res.status(200).json(product);
   } catch (error) {
     logger(error);
     res.status(500).json({ message: "Internal Server Error" });
