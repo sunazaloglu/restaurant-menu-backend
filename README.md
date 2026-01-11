@@ -1,10 +1,10 @@
-# 📝 Blog Site Backend API
+# 🍽️ Restaurant Menu Backend API
 
 ## Description
 
-This project is a RESTful backend API for a blog application. It provides full CRUD operations for categories, posts, and comments, along with advanced filtering capabilities and soft delete functionality.
+This project is a RESTful backend API for a restaurant menu application. It provides full CRUD operations for categories, products, and ingredients, including soft delete functionality and advanced filtering using query parameters.
 
-The API follows REST principles and is structured with a clean, modular architecture using Express and Knex.
+The API follows REST principles and is built with a clean, modular architecture using Express and Knex.
 
 ---
 
@@ -12,7 +12,7 @@ The API follows REST principles and is structured with a clean, modular architec
 
 - **Runtime:** Node.js
 - **Framework:** Express.js
-- **Language:** TypeScript
+- **Language:** JavaScript (ES Modules)
 - **Database:** PostgreSQL
 - **Query Builder:** Knex.js
 
@@ -23,122 +23,16 @@ The API follows REST principles and is structured with a clean, modular architec
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/sunazaloglu/restaurant-menu-backend.git
-cd blog-site-backend
-
-Install dependencies:
-
-npm install
-Configure Environment Variables: Create a .env file in the root directory:
-
-DB_NAME=your_database_name
+git clone [https://github.com/sunazaloglu/restaurant-menu-backend.git](https://github.com/sunazaloglu/restaurant-menu-backend.git)
+cd restaurant-menu-backend
+Install dependenciesBashnpm install
+Configure Environment VariablesCreate a .env file in the root directory (refer to .env.example):Kod snippet'iDB_NAME=your_database_name
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=your_db_user
 DB_PASSWORD=your_db_password
 PORT=3000
-An .env.example file is included as a reference for environment configuration.
-
-Run Database Migrations:
-
-npm run migrate
-Start Development Server:
-
-npm run dev
-
-API Endpoints
-
-📂 Categories
-
-Query Filters
-
-showDeleted: true, false (default), onlyDeleted
-
-Method	Endpoint	Description
-GET	/api/v1/categories	List all categories with filters
-GET	/api/v1/categories/:id	Get category details
-POST	/api/v1/categories	Create new category
-PATCH	/api/v1/categories/:id	Update category
-DELETE	/api/v1/categories/:id	Soft delete category
-
-🍔 Products
-
-Query Filters
-
-category: Filter by category ID
-
-showDeleted: true, false (default), onlyDeleted
-
-Method	Endpoint	Description
-GET	/api/v1/products	List products with filters
-GET	/api/v1/products/:id	Get product details
-POST	/api/v1/products	Create new product
-PATCH	/api/v1/products/:id	Update product
-DELETE	/api/v1/products/:id	Soft delete product
-
-🧂 Ingredients
-
-Query Filters
-
-showDeleted: true, false (default), onlyDeleted
-
-Method	Endpoint	Description
-GET	/api/v1/ingredients	List ingredients with filters
-GET	/api/v1/ingredients/:id	Get ingredient details
-POST	/api/v1/ingredients	Create new ingredient
-PATCH	/api/v1/ingredients/:id	Update ingredient
-DELETE	/api/v1/ingredients/:id	Soft delete ingredient
-
-🛠 Technical Notes
-
-Soft Delete:
-Implemented using the deleted_at field. Deleted records remain in the database but are hidden from default queries.
-
-Filtering:
-All list endpoints support query-based filtering using query parameters.
-
-Architecture:
-Controllers, models, and routes are strictly separated for maintainability.
-
-Health Check: Access GET /projectcheck to verify API status.
-{ "message": "OK" }
-
-Validation:
-Request body validation is handled at the controller level.
-
-📮 Testing
-
-A Postman Collection is included in the project folder to test all API endpoints.
-The collection includes:
-
-Example requests and responses
-
-Pre-configured endpoints
-
-base_url collection variable
-
-
-📊 HTTP Status Codes
-
-200 OK
-
-201 Created
-
-400 Bad Request
-
-404 Not Found
-
-500 Internal Server Error
-
-✅ Project Status
-
- CRUD operations completed
-
- Soft delete implemented
-
- Filtering via query parameters
-
- Postman collection included
-
- Ready for evaluation 🚀
+Run Database MigrationsBashnpm run migrate
+Start Development ServerBashnpm run dev
+🔗 API Endpoints📂 CategoriesQuery Filters: showDeleted (true | false | onlyDeleted)MethodEndpointDescriptionGET/api/v1/categoriesList categories with filtersGET/api/v1/categories/:idGet category by IDPOST/api/v1/categoriesCreate new categoryPATCH/api/v1/categories/:idUpdate categoryDELETE/api/v1/categories/:idSoft delete category🍔 ProductsQuery Filters: category (ID), showDeleted (true | false | onlyDeleted)MethodEndpointDescriptionGET/api/v1/productsList products with filtersGET/api/v1/products/:idGet product by IDPOST/api/v1/productsCreate new productPATCH/api/v1/products/:idUpdate productDELETE/api/v1/products/:idSoft delete product🧂 IngredientsQuery Filters: showDeleted (true | false | onlyDeleted)MethodEndpointDescriptionGET/api/v1/ingredientsList ingredients with filtersGET/api/v1/ingredients/:idGet ingredient by IDPOST/api/v1/ingredientsCreate new ingredientPATCH/api/v1/ingredients/:idUpdate ingredientDELETE/api/v1/ingredients/:idSoft delete ingredient🛠 Technical NotesSoft Delete: Implemented using the deleted_at field. Records are not physically removed.Filtering: All list endpoints support query-based filtering (e.g., ?showDeleted=true).Architecture: Controllers, Models, and Routes are strictly separated.Validation: Request body validation is handled at the controller level.📮 TestingA Postman Collection is included in the project root directory. It contains all endpoints, example requests, and responses.📊 HTTP Status Codes200 OK201 Created400 Bad Request404 Not Found500 Internal Server Error✅ Project Status[x] CRUD operations completed[x] Soft delete implemented[x] Filtering via query params[x] Postman collection included[x] Ready for evaluation 🚀
 ```
