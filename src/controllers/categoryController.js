@@ -31,11 +31,12 @@ export const createItem = async (req, res) => {
 
 export const getAllItems = async (req, res) => {
   try {
-    const items = await getAllCategories();
+    const { showDeleted } = req.query;
+    const items = await getAllCategories(showDeleted);
     res.status(200).json(items);
   } catch (error) {
     logger(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -45,11 +46,11 @@ export const updateItem = async (req, res) => {
     const updateData = req.body;
 
     if (!updateData || Object.keys(updateData).length === 0) {
-      res.status(400).json({ message: "No data provided for update" });
+      return res.status(400).json({ message: "No data provided for update" });
     }
     const updatedItem = await updateCategory(id, updateData);
     if (!updatedItem) {
-      res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ message: "Category not found" });
     }
 
     res.status(200).json(updatedItem);
@@ -64,12 +65,12 @@ export const deleteItem = async (req, res) => {
     const { id } = req.params;
     const deletedItem = await deleteCategory(id);
     if (!deletedItem) {
-      res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ message: "Category not found" });
     }
     return res.status(200).json(deletedItem);
   } catch (error) {
     logger(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -85,6 +86,6 @@ export const getItem = async (req, res) => {
     res.status(200).json(category);
   } catch (error) {
     logger(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };

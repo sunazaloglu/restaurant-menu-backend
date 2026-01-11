@@ -5,27 +5,44 @@ export const createCategory = async (category) => {
   return newItem;
 };
 
-export const getAllCategories = async () => {
-  const query = await knex("categories").select("id", "name");
-  return query;
+export const getAllCategories = async (showDeleted = "false") => {
+  const query = knex("categories").select(
+    "id",
+    "name",
+    "description",
+    "deleted_at"
+  );
+
+  if (showDeleted === "true") {
+  } else if (showDeleted === "onlyDeleted") {
+    query.whereNotNull("deleted_at");
+  } else {
+    query.whereNull("deleted_at");
+  }
+  return query.orderBy("id", "asc");
 };
 
 export const updateCategory = async (id, category) => {
   const [updateCategory] = await knex("categories")
     .where({ id })
-    .update(category)
+    .whereNull("deleted_at")
+    .update({ ...category, updated_at: knex.fn.now() })
     .returning("*");
   return updateCategory;
 };
 
 export const deleteCategory = async (id) => {
-  const deletedCategory = await knex("categories")
-    .where("id", id)
-    .update({ deleted_at: knex.fn.now() })
+  const [deleted] = await knex("categories")
+    .where({ id })
+    .whereNull("deleted_at")
+    .update({ deleted_at: knex.fn.now(), updated_at: knex.fn.now() })
     .returning("*");
-  return deletedCategory;
+  return deleted ?? null;
 };
 export const getCategoryById = async (id) => {
-  const category = await knex("categories").where({ id }).first();
+  const category = await knex("categories")
+    .where({ id })
+    .whereNull("deleted_at")
+    .first();
   return category;
 };
