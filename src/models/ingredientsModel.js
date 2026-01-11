@@ -14,3 +14,11 @@ export const getAllIngredient = async () => {
   const query = await knex("ingredients").select("id", "name", "is_allergen");
   return query;
 };
+
+export const getIngredientById = async (id) => {
+  const ingredient = await knex("ingredients")
+    .where("id", id)
+    .whereNull("deleted_at")
+    .first();
+  return ingredient;
+};
