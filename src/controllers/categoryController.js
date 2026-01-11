@@ -10,6 +10,17 @@ import { logger } from "../utils/logger.js";
 export const createItem = async (req, res) => {
   try {
     const item = req.body;
+    if (
+      !item?.name ||
+      String(item.name).trim().length === 0 ||
+      item.description == null ||
+      String(item.description).trim().length === 0
+    ) {
+      return res.status(400).json({
+        message: "Missing required fields: name, description",
+      });
+    }
+
     const newItem = await createCategory(item);
     res.status(201).json(newItem);
   } catch (error) {
@@ -33,7 +44,7 @@ export const updateItem = async (req, res) => {
     const { id } = req.params;
     const updateData = req.body;
 
-    if (!updateData) {
+    if (!updateData || Object.keys(updateData).length === 0) {
       res.status(400).json({ message: "No data provided for update" });
     }
     const updatedItem = await updateCategory(id, updateData);
@@ -65,6 +76,7 @@ export const deleteItem = async (req, res) => {
 export const getItem = async (req, res) => {
   try {
     const { id } = req.params;
+
     const category = await getCategoryById(id);
     if (!category) {
       res.status(404).json({ message: "Category not  found" });
