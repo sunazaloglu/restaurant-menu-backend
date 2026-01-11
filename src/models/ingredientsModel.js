@@ -22,3 +22,12 @@ export const getIngredientById = async (id) => {
     .first();
   return ingredient;
 };
+
+export const updateIngredient = async (id, ingredient) => {
+  const [updatedIngredient] = await knex("ingredients")
+    .where({ id })
+    .whereNull("deleted_at")
+    .update(ingredient)
+    .returning("*");
+  return updatedIngredient;
+};

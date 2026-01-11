@@ -2,6 +2,7 @@ import {
   createIngredient,
   getAllIngredient,
   getIngredientById,
+  updateIngredient,
 } from "../models/ingredientsModel.js";
 import { logger } from "../utils/logger.js";
 
@@ -51,6 +52,25 @@ export const getIngredient = async (req, res) => {
       return res.status(404).json({ message: "Ingredient not found" });
     }
     res.status(200).json(ingredient);
+  } catch (error) {
+    logger(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const updateIngredients = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const ingredientData = req.body;
+
+    if (!ingredientData || Object.keys(ingredientData).length === 0) {
+      return res.status(400).json({ message: "No data provided for update" });
+    }
+    const ingredientDataValidated = await updateIngredient(id, ingredientData);
+    if (!ingredientDataValidated) {
+      res.status(404).json({ message: "Ingredient not found" });
+    }
+    res.status(200).json(ingredientDataValidated);
   } catch (error) {
     logger(error);
     res.status(500).json({ message: "Internal Server Error" });
