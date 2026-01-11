@@ -1,4 +1,5 @@
 import knex from "../config/database.js";
+
 export const createCategory = async (category) => {
   const [newItem] = await knex("categories").insert(category).returning("*");
   return newItem;
@@ -19,7 +20,7 @@ export const updateCategory = async (id, category) => {
 
 export const deleteCategory = async (id) => {
   const deletedCategory = await knex("categories")
-    .where('id' , id)
+    .where("id", id)
     .update({ deleted_at: knex.fn.now() })
     .returning("*");
   return deletedCategory;

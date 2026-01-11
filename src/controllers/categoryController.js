@@ -13,7 +13,7 @@ export const createItem = async (req, res) => {
     const newItem = await createCategory(item);
     res.status(201).json(newItem);
   } catch (error) {
-    logger(error, ERROR);
+    logger(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -23,7 +23,7 @@ export const getAllItems = async (req, res) => {
     const items = await getAllCategories();
     res.status(200).json(items);
   } catch (error) {
-    logger(error, ERROR);
+    logger(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -43,7 +43,7 @@ export const updateItem = async (req, res) => {
 
     res.status(200).json(updatedItem);
   } catch (error) {
-    logger(error, ERROR);
+    logger(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -57,7 +57,7 @@ export const deleteItem = async (req, res) => {
     }
     return res.status(200).json(deletedItem);
   } catch (error) {
-    logger(error, ERROR);
+    logger(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
@@ -72,7 +72,7 @@ export const getItem = async (req, res) => {
     }
     res.status(200).json(category);
   } catch (error) {
-    logger(error, ERROR);
+    logger(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
