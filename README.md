@@ -1,126 +1,116 @@
 # 🍽️ Restaurant Menu Backend API
 
 ## Description
-This project is a RESTful backend API for a restaurant menu application.  
-It provides full CRUD operations for **categories**, **products**, and **ingredients**, including **soft delete** functionality and **query-based filtering**.
+This project is a RESTful backend API for a restaurant menu application. It provides full CRUD operations for categories, products, and ingredients, along with filtering capabilities and soft delete functionality.
 
-The API follows REST principles and is built with a clean, modular architecture using Express and Knex.
+The API follows REST principles and is structured with a clean and modular architecture.
 
 ---
 
 ## 🛠 Technologies
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Language:** JavaScript (ES Modules)
-- **Database:** PostgreSQL
-- **Query Builder:** Knex.js
+
+* **Runtime:** Node.js
+* **Framework:** Express.js
+* **Language:** JavaScript (ES Modules)
+* **Database:** PostgreSQL
+* **Query Builder:** Knex.js
 
 ---
 
 ## 📦 Installation & Setup
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/sunazaloglu/restaurant-menu-backend.git
-cd restaurant-menu-backend
-2. Install dependencies
-bash
-Kodu kopyala
-npm install
-3. Configure Environment Variables
-Create a .env file in the root directory (see .env.example):
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/sunazaloglu/restaurant-menu-backend.git](https://github.com/sunazaloglu/restaurant-menu-backend.git)
+    cd restaurant-menu-backend
+    ```
 
-env
-Kodu kopyala
-DB_NAME=your_database_name
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=your_db_user
-DB_PASSWORD=your_db_password
-PORT=3000
-4. Run Database Migrations
-bash
-Kodu kopyala
-npm run migrate
-5. Start Development Server
-bash
-Kodu kopyala
-npm run dev
-🔗 API Endpoints
-📂 Categories
-Query Filters:
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-showDeleted: true | false | onlyDeleted
+3.  **Configure Environment Variables:**
+    Create a `.env` file in the root directory:
+    ```env
+    DB_NAME=your_database_name
+    DB_HOST=localhost
+    DB_PORT=5432
+    DB_USER=your_db_user
+    DB_PASSWORD=your_db_password
+    PORT=3000
+    ```
+    An `.env.example` file is included as a reference for environment configuration.
 
-Method	Endpoint	Description
-GET	/api/v1/categories	List categories
-GET	/api/v1/categories/:id	Get category by ID
-POST	/api/v1/categories	Create new category
-PATCH	/api/v1/categories/:id	Update category
-DELETE	/api/v1/categories/:id	Soft delete category
+4.  **Run Database Migrations:**
+    ```bash
+    npm run migrate
+    ```
 
-🍔 Products
-Query Filters:
+5.  **Start Development Server:**
+    ```bash
+    npm run dev
+    ```
 
-category: category ID
+---
+ 
+## 🔗 API Endpoints
 
-showDeleted: true | false | onlyDeleted
+### 📂 Categories
+* **Query Filters:** * `showDeleted`: `true`, `false` (default), `onlyDeleted`
 
-Method	Endpoint	Description
-GET	/api/v1/products	List products
-GET	/api/v1/products/:id	Get product by ID
-POST	/api/v1/products	Create new product
-PATCH	/api/v1/products/:id	Update product
-DELETE	/api/v1/products/:id	Soft delete product
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/categories` | List all categories with filters |
+| `GET` | `/api/v1/categories/:id` | Get category details |
+| `POST` | `/api/v1/categories` | Create new category |
+| `PATCH` | `/api/v1/categories/:id` | Update category |
+| `DELETE` | `/api/v1/categories/:id` | Soft delete category |
 
-🧂 Ingredients
-Query Filters:
+### 🍔 Products
+* **Query Filters:** * `category`: Filter by category ID
+    * `showDeleted`: `true`, `false` (default), `onlyDeleted`
 
-showDeleted: true | false | onlyDeleted
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/products` | List products with filters |
+| `GET` | `/api/v1/products/:id` | Get product details |
+| `POST` | `/api/v1/products` | Create new product |
+| `PATCH` | `/api/v1/products/:id` | Update product |
+| `DELETE` | `/api/v1/products/:id` | Soft delete product |
 
-Method	Endpoint	Description
-GET	/api/v1/ingredients	List ingredients
-GET	/api/v1/ingredients/:id	Get ingredient by ID
-POST	/api/v1/ingredients	Create new ingredient
-PATCH	/api/v1/ingredients/:id	Update ingredient
-DELETE	/api/v1/ingredients/:id	Soft delete ingredient
+### 🧂 Ingredients
+* **Query Filters:** * `showDeleted`: `true`, `false` (default), `onlyDeleted`
 
-🛠 Technical Notes
-Soft Delete: Implemented via deleted_at. Records are not permanently removed.
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/ingredients` | List ingredients with filters |
+| `GET` | `/api/v1/ingredients/:id` | Get ingredient details |
+| `POST` | `/api/v1/ingredients` | Create new ingredient |
+| `PATCH` | `/api/v1/ingredients/:id` | Update ingredient |
+| `DELETE` | `/api/v1/ingredients/:id` | Soft delete ingredient |
 
-Filtering: All list endpoints support query-based filtering.
+---
 
-Architecture: Controllers, Models, and Routes are strictly separated.
+## 🛠 Technical Notes
 
-Validation: Input validation handled at controller level.
+* **Soft Delete:** Implemented using the `deleted_at` field. Deleted records remain in the DB but are hidden from standard queries.
+* **Architecture:** Controllers, models, and routes are strictly separated for maintainability.
+* **Validation:** Request body validation is handled at the controller level.
 
-📮 Testing
-A Postman Collection is included in the project root:
+## 📮 Testing
+A **Postman Collection** is included in the project folder to test all API endpoints with example request/response bodies.
 
-All endpoints
+## 📊 HTTP Status Codes
+- `200 OK`
+- `201 Created`
+- `400 Bad Request`
+- `404 Not Found`
+- `500 Internal Server Error`
 
-Example request & response bodies
-
-base_url environment variable
-
-📊 HTTP Status Codes
-200 OK
-
-201 Created
-
-400 Bad Request
-
-404 Not Found
-
-500 Internal Server Error
-
-✅ Project Status
- CRUD operations completed
-
- Soft delete implemented
-
- Query filtering supported
-
- Postman collection included
-
- Ready for evaluation 🚀
+## ✅ Project Status
+- [x] CRUD operations completed
+- [x] Soft delete implemented
+- [x] Filtering via query parameters
+- [x] Postman collection included
+- [x] Ready for evaluation 🚀
