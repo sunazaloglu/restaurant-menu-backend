@@ -38,8 +38,9 @@ export const createProduct = async (req, res) => {
 };
 export const getAllProduct = async (req, res) => {
   try {
-    const items = await getAllProducts();
-    res.status(200).json(items);
+    const { category, showDeleted } = req.query;
+    const items = await getAllProducts({ category, showDeleted });
+    return res.status(200).json(items);
   } catch (error) {
     logger(error);
     res.status(500).json({ message: "Internal Server Error" });
@@ -53,7 +54,7 @@ export const getProduct = async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: " Product not found" });
     }
-    res.status(200).json(product);
+    return res.status(200).json(product);
   } catch (error) {
     logger(error);
     res.status(500).json({ message: "Internal Server Error" });
@@ -70,12 +71,12 @@ export const updateProduct = async (req, res) => {
     }
     const updatedData = await updateProducts(id, updateData);
     if (!updatedData) {
-      res.status(404).json({ message: "Product not found" });
+      return res.status(404).json({ message: "Product not found" });
     }
-    res.status(200).json(updateData);
+    return res.status(200).json(updatedData);
   } catch (error) {
     logger(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -84,11 +85,11 @@ export const deleteProduct = async (req, res) => {
     const { id } = req.params;
     const deletedItem = await deleteProducts(id);
     if (!deletedItem) {
-      res.status(404).json({ message: " Product not found" });
+      return res.status(404).json({ message: " Product not found" });
     }
-    res.status(200).json(deletedItem);
+    return res.status(200).json(deletedItem);
   } catch (error) {
     logger(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
